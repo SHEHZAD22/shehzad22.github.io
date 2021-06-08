@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Glowing Battery level</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <section class="sec">
+        <div class="toggle"></div>
+        <div class="box">
+            <div class="content">
+                <h3>Battery</h3>
+                <div class="battryshape">
+                    <div class="level">
+                        <div class="percentage"></div>
+                    </div>
+                </div>
+                <div class="percent">50%</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let percentage = document.querySelector('.percentage');
+        let percent = document.querySelector('.percent');
+        navigator.getBattery().then(function (battery) {
+            percentage.style.width = battery.level * 100 + '%';
+            percent.innerHTML = battery.level * 100 + '%';
+        })
+
+        let sec = document.querySelector('.sec')
+        let toggle = document.querySelector('.toggle')
+        toggle.onclick = function(){
+            sec.classList.toggle('dark')
+        }
+    </script>
+</body>
+
+</html>
